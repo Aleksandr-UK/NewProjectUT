@@ -1,4 +1,4 @@
-package UT;
+package UT.Pages;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
@@ -9,6 +9,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.util.Date;
 
 public class TestInit {
 
@@ -40,5 +42,21 @@ public class TestInit {
         driver.get(site);
 
     }
+    
+    public synchronized static String generateUniqueEmail(String email) {
+        String newEmail = "";
+        String[] array = email.split("@");
+        try {
+            Thread.sleep((long)((Math.random()*1000)));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        newEmail = array[0] + "+" + new Date().getTime() + "@" + array[1];
+        return newEmail;
+    }
+
+    private String userEmail;
 
     }
+
